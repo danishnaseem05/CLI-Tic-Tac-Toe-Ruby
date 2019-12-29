@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+
+require '../config/environment.rb'
+
+puts "Hi! and Welcome to the Game of: "
+sleep(1)
+print "TIC"
+sleep(1)
+print " - "
+print "TAC"
+sleep(1)
+print " - "
+puts "TOE"
+sleep(1)
+puts "\n"
+puts "Which kind of game would you like to play?"
+puts "\n"
+puts "0 Players. 1 Player. 2 Players."
+puts "\n"
+
+
+
+def game_start
+  print "Enter the number to continue: "
+  puts "\n"
+  input = gets.strip.to_i
+  if input == 0
+    player_1 = Players::Computer.new("X")
+    player_2 = Players::Computer.new("O")
+    game = Game.new(player_1, player_2)
+    # Gameplay
+    game.play
+
+  elsif input == 1
+    player_1 = Players::Human.new("X")
+    player_2 = Players::Computer.new("O")
+    game = Game.new(player_1, player_2)
+    # Gameplay
+    game.play
+
+  elsif input == 2
+    game = Game.new
+    # Gameplay
+    game.play
+
+  else
+    puts "Invalid Option, Try Again"
+    puts "\n"
+    game_start
+
+  end
+end
+
+# Gameplay
+game_start
